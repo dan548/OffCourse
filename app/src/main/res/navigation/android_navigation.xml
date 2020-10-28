@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/android_navigation"
+    app:startDestination="@id/getting_started_fragment">
+
+    <fragment
+        android:id = "@+id/getting_started_fragment"
+        android:name = "com.collegeboys.offcourse.fragments.GettingStartedFragment"
+        tools:layout="@layout/fragment_getting_started">
+        <action
+            android:id="@+id/action_getting_started_fragment_to_create_account_fragment"
+            app:destination="@id/create_account_fragment" />
+        <action
+            android:id="@+id/action_getting_started_fragment_to_sign_in_fragment"
+            app:destination="@id/sign_in_fragment" />
+    </fragment>
+
+    <fragment
+        android:id = "@+id/sign_in_fragment"
+        android:name = "com.collegeboys.offcourse.fragments.SignInFragment"
+        tools:layout="@layout/fragment_sign_in">
+    </fragment>
+
+    <fragment
+        android:id = "@+id/create_account_fragment"
+        android:name = "com.collegeboys.offcourse.fragments.CreateAccountFragment"
+        tools:layout="@layout/fragment_create_account">
+    </fragment>
+
+</navigation>

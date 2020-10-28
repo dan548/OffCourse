@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">OffCourse</string>
+    <string name="sign_in">Sign in</string>
+    <string name="slogan">Stay connected, even if connection is lost</string>
+    <string name="create_account_or_sign_in">Create account or sign in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="your_username">Your username</string>
+    <string name="choose_password">Choose password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="enter_password">Enter password</string>
+</resources>
