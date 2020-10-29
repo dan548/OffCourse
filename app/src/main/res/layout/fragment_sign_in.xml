@@ -4,14 +4,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background_light">
 
     <EditText
         android:id="@+id/editTextEnterPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/app_blue_main"
         android:ems="10"
         android:hint="@string/enter_password"
+        android:fontFamily="sans-serif"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,11 +22,15 @@
 
     <Button
         android:id="@+id/button_sign_in"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/app_blue_light"
         android:text="@string/sign_in"
+        android:textAllCaps="false"
+        android:fontFamily="sans-serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextEnterPassword" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

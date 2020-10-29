@@ -3,6 +3,7 @@
     package="com.collegeboys.offcourse" >
 
     <application
+        android:name=".OffCourseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
