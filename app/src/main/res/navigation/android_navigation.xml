@@ -8,6 +8,7 @@
     <fragment
         android:id = "@+id/getting_started_fragment"
         android:name = "com.collegeboys.offcourse.fragments.GettingStartedFragment"
+        android:label="Getting started"
         tools:layout="@layout/fragment_getting_started">
         <action
             android:id="@+id/action_getting_started_fragment_to_create_account_fragment"
@@ -20,12 +21,14 @@
     <fragment
         android:id = "@+id/sign_in_fragment"
         android:name = "com.collegeboys.offcourse.fragments.SignInFragment"
+        android:label="Sign in"
         tools:layout="@layout/fragment_sign_in">
     </fragment>
 
     <fragment
         android:id = "@+id/create_account_fragment"
         android:name = "com.collegeboys.offcourse.fragments.CreateAccountFragment"
+        android:label="Create account"
         tools:layout="@layout/fragment_create_account">
     </fragment>
 
