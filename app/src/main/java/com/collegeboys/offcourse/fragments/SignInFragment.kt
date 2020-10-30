@@ -17,5 +17,4 @@ class SignInFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_sign_in, container, false)
         return view
     }
-
 }
