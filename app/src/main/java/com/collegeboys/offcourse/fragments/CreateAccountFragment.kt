@@ -1,8 +1,9 @@
 package com.collegeboys.offcourse.fragments
 
-import com.collegeboys.offcourse.R
 import com.collegeboys.offcourse.database.entity.User
+import com.collegeboys.offcourse.database.entity.UserSession
 import com.collegeboys.offcourse.viewmodel.CreateAccountViewModel
+import com.collegeboys.offcourse.R
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +12,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import org.koin.android.viewmodel.ext.android.viewModel
+import java.time.LocalDateTime
 
 class CreateAccountFragment : Fragment() {
     private val createAccountViewModel: CreateAccountViewModel by viewModel()
@@ -26,6 +29,8 @@ class CreateAccountFragment : Fragment() {
         val signUpButton = view.findViewById<Button>(R.id.button_sign_up)
         signUpButton.setOnClickListener {
             createAccount(view)
+            val action = CreateAccountFragmentDirections.actionCreateAccountFragmentToSignInFragment()
+            Navigation.findNavController(view).navigate(R.id.action_create_account_fragment_to_sign_in_fragment)
         }
         return view
     }
@@ -42,9 +47,9 @@ class CreateAccountFragment : Fragment() {
                 .toString()
 
         if (password == confirmedPassword) {
-            createAccountViewModel.createAccount(
-                    User(name = username, password = password)
-            )
+            val user = User(name = username, password = password)
+            val session = UserSession(userId = user.userId)
+            createAccountViewModel.createAccount(user, session)
         }
     }
 }

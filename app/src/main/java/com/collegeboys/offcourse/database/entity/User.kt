@@ -8,12 +8,12 @@ import java.util.*
 @Entity(tableName = "users")
 data class User(
         @PrimaryKey(autoGenerate = false)
-    @ColumnInfo(name = "id")
-    val id: String = UUID.randomUUID().toString(),
+        @ColumnInfo(name = "user_id")
+        val userId: String = UUID.randomUUID().toString(),
 
         @ColumnInfo(name = "name")
-    val name: String,
+        val name: String,
 
         @ColumnInfo(name = "password")
-    val password: String
+        val password: String
 )

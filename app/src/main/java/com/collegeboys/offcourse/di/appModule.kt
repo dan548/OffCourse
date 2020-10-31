@@ -5,6 +5,7 @@ import com.collegeboys.offcourse.repository.UserRepository
 
 import androidx.room.Room
 import com.collegeboys.offcourse.viewmodel.CreateAccountViewModel
+import com.collegeboys.offcourse.viewmodel.SignInViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
@@ -35,5 +36,11 @@ val userModule = module {
 val createAccountModule = module {
     viewModel("CreateAccountViewModel") {
         CreateAccountViewModel(get())
+    }
+}
+
+val signInModule = module {
+    viewModel("SignInViewModel") {
+        SignInViewModel(get())
     }
 }

@@ -23,6 +23,9 @@
         android:name = "com.collegeboys.offcourse.fragments.SignInFragment"
         android:label="Sign in"
         tools:layout="@layout/fragment_sign_in">
+        <action
+            android:id="@+id/action_sign_in_fragment_to_blankFragment"
+            app:destination="@id/blankFragment" />
     </fragment>
 
     <fragment
@@ -30,6 +33,15 @@
         android:name = "com.collegeboys.offcourse.fragments.CreateAccountFragment"
         android:label="Create account"
         tools:layout="@layout/fragment_create_account">
+        <action
+            android:id="@+id/action_create_account_fragment_to_sign_in_fragment"
+            app:destination="@id/sign_in_fragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/blankFragment"
+        android:name="com.collegeboys.offcourse.fragments.BlankFragment"
+        android:label="fragment_blank"
+        tools:layout="@layout/fragment_blank" />
 
 </navigation>
