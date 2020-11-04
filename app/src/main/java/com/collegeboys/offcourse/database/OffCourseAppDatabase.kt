@@ -5,9 +5,10 @@ import com.collegeboys.offcourse.database.dao.UserDao
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.collegeboys.offcourse.database.entity.UserSession
 
 @Database(
-    entities = [User::class],
+    entities = [User::class, UserSession::class],
     version = 1,
     exportSchema = false
 )
