@@ -14,7 +14,6 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import org.koin.android.viewmodel.ext.android.viewModel
-import java.time.LocalDateTime
 
 class CreateAccountFragment : Fragment() {
     private val createAccountViewModel: CreateAccountViewModel by viewModel()
@@ -36,13 +35,13 @@ class CreateAccountFragment : Fragment() {
     }
 
     private fun createAccount(view: View) {
-        val username = view.findViewById<EditText>(R.id.editTextUserName)
+        val username = view.findViewById<EditText>(R.id.sign_up_username)
                 .text
                 .toString()
-        val password = view.findViewById<EditText>(R.id.editTextPassword)
+        val password = view.findViewById<EditText>(R.id.sign_up_password)
                 .text
                 .toString()
-        val confirmedPassword = view.findViewById<EditText>(R.id.editTextConfirmPassword)
+        val confirmedPassword = view.findViewById<EditText>(R.id.sign_up_confirm_password)
                 .text
                 .toString()
 
