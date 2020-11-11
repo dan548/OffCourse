@@ -25,7 +25,7 @@ class SignInFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_sign_in, container, false)
 
-        val signInButton = view.findViewById<Button>(R.id.button_sign_in)
+        val signInButton = view.findViewById<Button>(R.id.sign_in_button)
         signInButton.setOnClickListener {
             signIn(view)
             val action = SignInFragmentDirections.actionSignInFragmentToBlankFragment()
@@ -35,11 +35,14 @@ class SignInFragment : Fragment() {
     }
 
     fun signIn(view: View) {
-        val password = view.findViewById<EditText>(R.id.editTextEnterPassword)
+        val username = view.findViewById<EditText>(R.id.sign_in_username)
+            .text
+            .toString()
+        val password = view.findViewById<EditText>(R.id.sign_in_password)
             .text
             .toString()
 
-        val user = signInViewModel.getUser()
+        val user = signInViewModel.getUserByName(username)
         if (user.password == password) {
             signInViewModel.createNewSession(UserSession(userId = user.userId))
 

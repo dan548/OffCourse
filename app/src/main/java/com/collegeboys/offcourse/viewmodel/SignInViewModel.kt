@@ -6,7 +6,7 @@ import com.collegeboys.offcourse.database.entity.UserSession
 import androidx.lifecycle.ViewModel
 
 class SignInViewModel(private val userRepository: UserRepository) : ViewModel() {
-    fun getUser() = userRepository.getAll()[0]
+    fun getUserByName(username: String) = userRepository.getByName(username)
 
     fun createNewSession(session: UserSession) = userRepository.newSession(session)
 }

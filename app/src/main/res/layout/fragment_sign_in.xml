@@ -8,29 +8,47 @@
     android:background="@color/background_light">
 
     <EditText
-        android:id="@+id/editTextEnterPassword"
+        android:id="@+id/sign_in_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
         android:backgroundTint="@color/app_blue_main"
         android:ems="10"
-        android:hint="@string/enter_password"
         android:fontFamily="sans-serif"
+        android:hint="@string/sign_in_username"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/sign_in_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:backgroundTint="@color/app_blue_main"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:hint="@string/sign_in_password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button_sign_in"
+        android:id="@+id/sign_in_button"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/app_blue_light"
+        android:fontFamily="sans-serif"
         android:text="@string/sign_in"
         android:textAllCaps="false"
-        android:fontFamily="sans-serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEnterPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/sign_in_password"
+        app:layout_constraintVertical_bias="0.231" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
