@@ -28,14 +28,16 @@ class SignInFragment : Fragment() {
 
         val signInButton = view.findViewById<Button>(R.id.sign_in_button)
         signInButton.setOnClickListener {
-            signIn(view)
-            val action = SignInFragmentDirections.actionSignInFragmentToBlankFragment()
-            Navigation.findNavController(view).navigate(R.id.action_sign_in_fragment_to_blankFragment)
+            if (signIn(view)) {
+                val action = SignInFragmentDirections.actionSignInFragmentToBlankFragment()
+                Navigation.findNavController(view)
+                    .navigate(R.id.action_sign_in_fragment_to_blankFragment)
+            }
         }
         return view
     }
 
-    fun signIn(view: View) {
+    fun signIn(view: View): Boolean {
         val username = view.findViewById<EditText>(R.id.sign_in_username)
             .text
             .toString()
@@ -44,12 +46,15 @@ class SignInFragment : Fragment() {
             .toString()
 
         val user = signInViewModel.getUserByName(username)
-        if (user.password == password) {
-            signInViewModel.createNewSession(
-                UserSession(userId = user.userId, loginDate = LocalDateTime.now())
-            )
-
-            Toast.makeText(context, "SIGNED", Toast.LENGTH_LONG).show()
+        if (user != null) {
+            if (user.password == password) {
+                signInViewModel.createNewSession(
+                    UserSession(userId = user.userId, loginDate = LocalDateTime.now())
+                )
+                Toast.makeText(context, "SIGNED", Toast.LENGTH_LONG).show()
+            }
+            return true
         }
+        return false
     }
 }
