@@ -1,6 +1,7 @@
 package com.collegeboys.offcourse.fragments
 
 import com.collegeboys.offcourse.viewmodel.SignInViewModel
+import com.collegeboys.offcourse.database.entity.UserSession
 import com.collegeboys.offcourse.R
 
 import android.os.Bundle
@@ -12,8 +13,8 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import com.collegeboys.offcourse.database.entity.UserSession
 import org.koin.android.viewmodel.ext.android.viewModel
+import java.time.LocalDateTime
 
 class SignInFragment : Fragment() {
     private val signInViewModel: SignInViewModel by viewModel()
@@ -44,7 +45,9 @@ class SignInFragment : Fragment() {
 
         val user = signInViewModel.getUserByName(username)
         if (user.password == password) {
-            signInViewModel.createNewSession(UserSession(userId = user.userId))
+            signInViewModel.createNewSession(
+                UserSession(userId = user.userId, loginDate = LocalDateTime.now())
+            )
 
             Toast.makeText(context, "SIGNED", Toast.LENGTH_LONG).show()
         }

@@ -14,6 +14,7 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import org.koin.android.viewmodel.ext.android.viewModel
+import java.time.LocalDateTime
 
 class CreateAccountFragment : Fragment() {
     private val createAccountViewModel: CreateAccountViewModel by viewModel()
@@ -47,7 +48,7 @@ class CreateAccountFragment : Fragment() {
 
         if (password == confirmedPassword) {
             val user = User(name = username, password = password)
-            val session = UserSession(userId = user.userId)
+            val session = UserSession(userId = user.userId, loginDate = LocalDateTime.now())
             createAccountViewModel.createAccount(user, session)
         }
     }

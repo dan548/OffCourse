@@ -14,5 +14,8 @@ data class UserSession(
         val sessionId: String = UUID.randomUUID().toString(),
 
         @ColumnInfo(name = "user_id")
-        val userId: String
+        val userId: String,
+
+        @ColumnInfo(name = "login_date")
+        val loginDate: LocalDateTime?
 )
