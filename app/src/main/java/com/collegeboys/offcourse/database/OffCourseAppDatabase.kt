@@ -8,9 +8,11 @@ import com.collegeboys.offcourse.database.converters.LocalDateTimeConverter
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.collegeboys.offcourse.database.dao.ContactDao
+import com.collegeboys.offcourse.database.entity.Contact
 
 @Database(
-    entities = [User::class, UserSession::class],
+    entities = [User::class, UserSession::class, Contact::class],
     version = 2,
     exportSchema = false
 )
@@ -19,6 +21,7 @@ import androidx.room.TypeConverters
 )
 abstract class OffCourseAppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
+    abstract fun contactDao(): ContactDao
 
     companion object {
         const val DATABASE_NAME = "offcourse_db"

@@ -1,11 +1,7 @@
 package com.collegeboys.offcourse
 
-import com.collegeboys.offcourse.di.databaseModule
-import com.collegeboys.offcourse.di.userModule
-import com.collegeboys.offcourse.di.createAccountModule
-
 import android.app.Application
-import com.collegeboys.offcourse.di.signInModule
+import com.collegeboys.offcourse.di.*
 import org.koin.android.ext.android.startKoin
 
 class OffCourseApplication : Application() {
@@ -16,7 +12,8 @@ class OffCourseApplication : Application() {
             this,
             listOf(
                 databaseModule, userModule,
-                createAccountModule, signInModule
+                createAccountModule, signInModule,
+                contactModule
             )
         )
     }
