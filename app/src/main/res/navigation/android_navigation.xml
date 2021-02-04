@@ -72,5 +72,15 @@
         android:name="com.collegeboys.offcourse.fragments.ShowQrCodeFragment"
         android:label="fragment_show_qr_code"
         tools:layout="@layout/fragment_show_qr_code" />
+    <fragment
+        android:id="@+id/messageFragment2"
+        android:name="com.collegeboys.offcourse.MessageFragment"
+        android:label="fragment_message_list"
+        tools:layout="@layout/fragment_message_list" />
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.collegeboys.offcourse.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
 
 </navigation>
