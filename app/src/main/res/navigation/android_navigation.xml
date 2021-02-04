@@ -52,6 +52,25 @@
         android:id="@+id/add_contact_fragment"
         android:name="com.collegeboys.offcourse.fragments.AddContactFragment"
         android:label="fragment_add_contact"
-        tools:layout="@layout/fragment_add_contact" />
+        tools:layout="@layout/fragment_add_contact" >
+        <action
+            android:id="@+id/action_add_contact_fragment_to_scan_qr_code_fragment"
+            app:destination="@id/scan_qr_code_fragment" />
+        <action
+            android:id="@+id/action_add_contact_fragment_to_show_qr_code_fragment"
+            app:destination="@id/show_qr_code_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/scan_qr_code_fragment"
+        android:name="com.collegeboys.offcourse.fragments.ScanQrCodeFragment"
+        android:label="fragment_scan_qr_code"
+        tools:layout="@layout/fragment_scan_qr_code" />
+
+    <fragment
+        android:id="@+id/show_qr_code_fragment"
+        android:name="com.collegeboys.offcourse.fragments.ShowQrCodeFragment"
+        android:label="fragment_show_qr_code"
+        tools:layout="@layout/fragment_show_qr_code" />
 
 </navigation>
