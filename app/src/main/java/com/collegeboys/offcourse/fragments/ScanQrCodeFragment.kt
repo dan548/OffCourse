@@ -7,10 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.navigation.Navigation
 import com.collegeboys.offcourse.R
 import com.collegeboys.offcourse.connection.socket.MessageSenderThread
+import com.collegeboys.offcourse.repository.ContactRepository
+import org.koin.android.ext.android.inject
 
 class ScanQrCodeFragment : Fragment() {
+    private val contactRepository by inject<ContactRepository>()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -19,6 +24,10 @@ class ScanQrCodeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_scan_qr_code, container, false)
         view.findViewById<Button>(R.id.button2).setOnClickListener {
             onClick(view)
+            val action = ScanQrCodeFragmentDirections.actionScanQrCodeFragmentToChatFragment()
+            Navigation
+                .findNavController(view)
+                .navigate(R.id.chat_fragment)
         }
         return view
     }

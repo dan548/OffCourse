@@ -14,4 +14,5 @@
 
     <string name="shared_pref_key">com.github.victimoftrap.offcourse.SHARED_PREF_FILE</string>
     <string name="shared_pref_username_key">com.github.victimoftrap.offcourse.USERNAME</string>
+    <string name="shared_pref_user_id_key">com.github.victimoftrap.offcourse.USER_ID</string>
 </resources>

@@ -2,10 +2,14 @@ package com.collegeboys.offcourse.connection.socket
 
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
+import android.widget.Toast
 import java.io.IOException
+import java.lang.Exception
 import java.net.Socket
 
 class SendReceiveMessageThread(private val socket: Socket?) : Thread() {
+    private val TAG = "SendReceiveMessage"
     private val inputStream = socket?.getInputStream()
     private val outputStream = socket?.getOutputStream()
 
@@ -30,5 +34,17 @@ class SendReceiveMessageThread(private val socket: Socket?) : Thread() {
                 e.printStackTrace()
             }
         }
+    }
+
+    fun sendMessage(message: String) {
+        Thread {
+            try {
+                outputStream?.write(message.toByteArray())
+            } catch (e: IOException) {
+                Log.d(TAG, "Can't send message: $e");
+            } catch (e: Exception) {
+                Log.d(TAG, "Error: $e");
+            }
+        }.run()
     }
 }

@@ -65,21 +65,21 @@
         android:id="@+id/scan_qr_code_fragment"
         android:name="com.collegeboys.offcourse.fragments.ScanQrCodeFragment"
         android:label="fragment_scan_qr_code"
-        tools:layout="@layout/fragment_scan_qr_code" />
+        tools:layout="@layout/fragment_scan_qr_code" >
+        <action
+            android:id="@+id/action_scan_qr_code_fragment_to_chat_fragment"
+            app:destination="@id/chat_fragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/show_qr_code_fragment"
         android:name="com.collegeboys.offcourse.fragments.ShowQrCodeFragment"
         android:label="fragment_show_qr_code"
         tools:layout="@layout/fragment_show_qr_code" />
+
     <fragment
-        android:id="@+id/messageFragment2"
-        android:name="com.collegeboys.offcourse.MessageFragment"
-        android:label="fragment_message_list"
-        tools:layout="@layout/fragment_message_list" />
-    <fragment
-        android:id="@+id/chatFragment"
-        android:name="com.collegeboys.offcourse.ChatFragment"
+        android:id="@+id/chat_fragment"
+        android:name="com.collegeboys.offcourse.fragments.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
 

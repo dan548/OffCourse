@@ -13,7 +13,7 @@ class OffCourseApplication : Application() {
             listOf(
                 databaseModule, userModule,
                 createAccountModule, signInModule,
-                contactModule
+                contactModule, messageModule
             )
         )
     }

@@ -57,6 +57,7 @@ class CreateAccountFragment : Fragment() {
             val sharedPreference = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
             with (sharedPreference.edit()) {
                 putString(getString(R.string.shared_pref_username_key), username)
+                putString(getString(R.string.shared_pref_user_id_key), user.userId)
                 apply()
             }
         }
