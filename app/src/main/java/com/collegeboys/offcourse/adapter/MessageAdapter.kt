@@ -1,4 +1,4 @@
-package com.collegeboys.offcourse
+package com.collegeboys.offcourse.adapter
 
 import com.collegeboys.offcourse.database.entity.Message
 
@@ -9,17 +9,27 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import androidx.lifecycle.LiveData
+import com.collegeboys.offcourse.R
 
-class MessageAdapter(private val context: Context, private val userId: String) : BaseAdapter() {
-    private val messages: List<Message> = mutableListOf()
+class MessageAdapter(
+    private val context: Context,
+    val ownerId: String,
+    val otherUserId: String
+) : BaseAdapter() {
+    private val messages: MutableList<Message> = mutableListOf()
 
-    override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
+    fun add(message: Message) {
+        messages.add(message)
+    }
+
+    override fun getView(index: Int, view: View?, viewGroup: ViewGroup?): View {
         val messageInflater =
             context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val message = messages.get(p0)
+        val message = messages.get(index)
 
-        var convertView = when (message.senderId) {
-            userId -> messageInflater.inflate(R.layout.my_message_bubble, null)
+        val convertView = when (message.senderId) {
+            ownerId -> messageInflater.inflate(R.layout.my_message_bubble, null)
             else -> messageInflater.inflate(R.layout.received_message_bubble, null)
         }
         val holder = MessageViewHolder(
@@ -30,9 +40,9 @@ class MessageAdapter(private val context: Context, private val userId: String) :
         return convertView
     }
 
-    override fun getItem(p0: Int): Message = messages[p0]
+    override fun getItem(index: Int): Message = messages[index]
 
-    override fun getItemId(p0: Int): Long = p0.toLong()
+    override fun getItemId(index: Int): Long = index.toLong()
 
     override fun getCount(): Int = messages.size
 }
