@@ -1,5 +1,8 @@
 package com.collegeboys.offcourse.fragments
 
+import com.collegeboys.offcourse.R
+import com.collegeboys.offcourse.repository.ContactRepository
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,23 +10,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.fragment.app.setFragmentResult
 import androidx.navigation.Navigation
-import com.collegeboys.offcourse.R
-import com.collegeboys.offcourse.connection.socket.MessageSenderThread
-import com.collegeboys.offcourse.repository.ContactRepository
 import org.koin.android.ext.android.inject
 
 class ScanQrCodeFragment : Fragment() {
+    private lateinit var addressElement: EditText
+    private lateinit var portElement: EditText
     private val contactRepository by inject<ContactRepository>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_scan_qr_code, container, false)
+        addressElement = view.findViewById(R.id.editTextTextPersonName)
+        portElement = view.findViewById(R.id.editTextTextPersonName3)
+
         view.findViewById<Button>(R.id.button2).setOnClickListener {
-            onClick(view)
+            onClick()
             val action = ScanQrCodeFragmentDirections.actionScanQrCodeFragmentToChatFragment()
             Navigation
                 .findNavController(view)
@@ -32,11 +37,13 @@ class ScanQrCodeFragment : Fragment() {
         return view
     }
 
-    private fun onClick(view: View) {
-        val address = view.findViewById<EditText>(R.id.editTextTextPersonName).text.toString()
-        val port = view.findViewById<EditText>(R.id.editTextTextPersonName3).text.toString()
+    private fun onClick() {
+        val address = addressElement.text.toString()
+        val port = portElement.text.toString()
 
-        val clientClass = MessageSenderThread(address, port.toInt())
-        clientClass.start()
+        val otherUserParamsBundle = Bundle()
+        otherUserParamsBundle.putString("ip_address", address)
+        otherUserParamsBundle.putString("port", port)
+        setFragmentResult(getString(R.string.companion_message_params), otherUserParamsBundle)
     }
 }

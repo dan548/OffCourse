@@ -1,7 +1,6 @@
 package com.collegeboys.offcourse.fragments
 
 import com.collegeboys.offcourse.R
-import com.collegeboys.offcourse.connection.socket.MessageReceiverThread
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,7 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 
 class ShowQrCodeFragment : Fragment() {
     override fun onCreateView(
@@ -27,8 +27,7 @@ class ShowQrCodeFragment : Fragment() {
     private fun onClick(view: View) {
         val port = view.findViewById<EditText>(R.id.editTextTextPersonName2).text.toString()
 
-        val serverClass = MessageReceiverThread(port = port.toInt())
-        serverClass.start()
-        Toast.makeText(context, "Waiting", Toast.LENGTH_SHORT).show()
+        val myParamsBundle = bundleOf("port" to port)
+        setFragmentResult(getString(R.string.my_message_params), myParamsBundle)
     }
 }

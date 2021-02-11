@@ -4,6 +4,7 @@ import com.collegeboys.offcourse.viewmodel.SignInViewModel
 import com.collegeboys.offcourse.database.entity.UserSession
 import com.collegeboys.offcourse.R
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,8 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import java.time.LocalDateTime
 
 class SignInFragment : Fragment() {
+    private lateinit var usernameElement: EditText
+    private lateinit var passwordElement: EditText
     private val signInViewModel: SignInViewModel by viewModel()
 
     override fun onCreateView(
@@ -25,10 +28,20 @@ class SignInFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_sign_in, container, false)
+        usernameElement = view.findViewById(R.id.sign_in_username)
+        passwordElement = view.findViewById(R.id.sign_in_password)
+
+        val preference = activity?.getPreferences(Context.MODE_PRIVATE)
+        val defaultUsername: String? = preference?.getString(
+            getString(R.string.shared_pref_username_key), null
+        )
+        if (defaultUsername != null) {
+            view.findViewById<EditText>(R.id.sign_in_username).setText(defaultUsername)
+        }
 
         val signInButton = view.findViewById<Button>(R.id.sign_in_button)
         signInButton.setOnClickListener {
-            if (signIn(view)) {
+            if (signIn()) {
                 val action = SignInFragmentDirections.actionSignInFragmentToBlankFragment()
                 Navigation.findNavController(view)
                     .navigate(R.id.action_sign_in_fragment_to_blankFragment)
@@ -37,13 +50,9 @@ class SignInFragment : Fragment() {
         return view
     }
 
-    fun signIn(view: View): Boolean {
-        val username = view.findViewById<EditText>(R.id.sign_in_username)
-            .text
-            .toString()
-        val password = view.findViewById<EditText>(R.id.sign_in_password)
-            .text
-            .toString()
+    fun signIn(): Boolean {
+        val username = usernameElement.text.toString()
+        val password = passwordElement.text.toString()
 
         val user = signInViewModel.getUserByName(username)
         if (user != null) {
@@ -51,7 +60,7 @@ class SignInFragment : Fragment() {
                 signInViewModel.createNewSession(
                     UserSession(userId = user.userId, loginDate = LocalDateTime.now())
                 )
-                Toast.makeText(context, "SIGNED", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Signed!", Toast.LENGTH_LONG).show()
             }
             return true
         }
