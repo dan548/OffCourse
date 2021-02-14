@@ -1,5 +1,7 @@
 package com.collegeboys.offcourse
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
@@ -19,5 +21,10 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, _, _ ->
             actionBar?.title = navController.currentDestination?.label
         }
+
+        val actionBar = supportActionBar
+        val colorDrawable = ColorDrawable(Color.parseColor("#004C99"))
+        actionBar?.setBackgroundDrawable(colorDrawable)
+
     }
 }

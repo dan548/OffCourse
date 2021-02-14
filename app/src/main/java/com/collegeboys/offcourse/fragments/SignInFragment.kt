@@ -42,9 +42,9 @@ class SignInFragment : Fragment() {
         val signInButton = view.findViewById<Button>(R.id.sign_in_button)
         signInButton.setOnClickListener {
             if (signIn()) {
-                val action = SignInFragmentDirections.actionSignInFragmentToBlankFragment()
-                Navigation.findNavController(view)
-                    .navigate(R.id.action_sign_in_fragment_to_blankFragment)
+                Navigation
+                    .findNavController(view)
+                    .navigate(R.id.action_sign_in_fragment_to_add_contact_fragment)
             }
         }
         return view

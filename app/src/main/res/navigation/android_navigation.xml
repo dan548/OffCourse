@@ -24,8 +24,8 @@
         android:label="Sign in"
         tools:layout="@layout/fragment_sign_in">
         <action
-            android:id="@+id/action_sign_in_fragment_to_blankFragment"
-            app:destination="@id/all_messages_fragment" />
+            android:id="@+id/action_sign_in_fragment_to_add_contact_fragment"
+            app:destination="@id/add_contact_fragment" />
     </fragment>
 
     <fragment
@@ -38,15 +38,11 @@
             app:destination="@id/sign_in_fragment" />
     </fragment>
 
-    <fragment
-        android:id="@+id/all_messages_fragment"
-        android:name="com.collegeboys.offcourse.fragments.AllMessagesFragment"
-        android:label="fragment_blank"
-        tools:layout="@layout/fragment_all_messages">
-        <action
-            android:id="@+id/action_all_messages_fragment_to_add_contact_fragment"
-            app:destination="@id/add_contact_fragment" />
-    </fragment>
+<!--    <fragment-->
+<!--        android:id="@+id/all_messages_fragment"-->
+<!--        android:name="com.collegeboys.offcourse.fragments.AllMessagesFragment"-->
+<!--        android:label="fragment_blank"-->
+<!--        tools:layout="@layout/fragment_all_messages"/>-->
 
     <fragment
         android:id="@+id/add_contact_fragment"

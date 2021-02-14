@@ -18,10 +18,10 @@ class AllMessagesFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_all_messages, container, false)
         val addContactButton = view.findViewById<FloatingActionButton>(R.id.add_contact_button)
         addContactButton.setOnClickListener {
-            val action = AllMessagesFragmentDirections.actionAllMessagesFragmentToAddContactFragment()
-            Navigation
-                    .findNavController(view)
-                    .navigate(R.id.action_all_messages_fragment_to_add_contact_fragment)
+//            val action = AllMessagesFragmentDirections.actionAllMessagesFragmentToAddContactFragment()
+//            Navigation
+//                    .findNavController(view)
+//                    .navigate(R.id.action_all_messages_fragment_to_add_contact_fragment)
         }
         return view
     }
