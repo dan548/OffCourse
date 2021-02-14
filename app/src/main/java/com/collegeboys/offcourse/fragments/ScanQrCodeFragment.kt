@@ -29,10 +29,10 @@ class ScanQrCodeFragment : Fragment() {
 
         view.findViewById<Button>(R.id.button2).setOnClickListener {
             onClick()
-            val action = ScanQrCodeFragmentDirections.actionScanQrCodeFragmentToChatFragment()
-            Navigation
-                .findNavController(view)
-                .navigate(R.id.chat_fragment)
+//            val action = ScanQrCodeFragmentDirections.actionScanQrCodeFragmentToChatFragment()
+//            Navigation
+//                .findNavController(view)
+//                .navigate(R.id.chat_fragment)
         }
         return view
     }

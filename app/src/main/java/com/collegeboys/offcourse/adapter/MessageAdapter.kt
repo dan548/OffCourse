@@ -26,7 +26,7 @@ class MessageAdapter(
     override fun getView(index: Int, view: View?, viewGroup: ViewGroup?): View {
         val messageInflater =
             context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val message = messages.get(index)
+        val message = messages[index]
 
         val convertView = when (message.senderId) {
             ownerId -> messageInflater.inflate(R.layout.my_message_bubble, null)

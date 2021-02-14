@@ -11,11 +11,19 @@
     <string name="sign_in_password">Enter password</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="show_this_qr_to_your_companion">Show this QR to your companion</string>
 
     <string name="shared_pref_key">com.github.victimoftrap.offcourse.SHARED_PREF_FILE</string>
     <string name="shared_pref_username_key">com.github.victimoftrap.offcourse.USERNAME</string>
     <string name="shared_pref_user_id_key">com.github.victimoftrap.offcourse.USER_ID</string>
 
+    <string name="shared_pref_qr_scanned">com.github.victimoftrap.offcourse.QR_SCANNED</string>
+    <string name="shared_pref_qr_showed">com.github.victimoftrap.offcourse.QR_SHOWED</string>
+
+    <string name="connection_user_id">user_id</string>
+    <string name="connection_username">username</string>
+    <string name="connection_address">ip_address</string>
+    <string name="connection_port">port</string>
     <string name="my_message_params">my_message_params</string>
     <string name="companion_message_params">companion_message_params</string>
 </resources>

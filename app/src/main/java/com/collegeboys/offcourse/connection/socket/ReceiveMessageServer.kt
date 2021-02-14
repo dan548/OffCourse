@@ -7,8 +7,9 @@ import java.io.IOException
 import java.io.ObjectInputStream
 import java.net.ServerSocket
 
-class ReceiveMessageServer(port: Int,
-                           private val messageAdapter: MessageAdapter
+class ReceiveMessageServer(
+    port: Int,
+    private val messageAdapter: MessageAdapter
 ) {
     private lateinit var serverSocket: ServerSocket
     private var stop = false
@@ -33,7 +34,7 @@ class ReceiveMessageServer(port: Int,
         override fun run() {
             try {
                 serverSocket = ServerSocket(port)
-                Log.d(TAG, "Started message server")
+                Log.d(TAG, "Started message server at $port")
                 while (!stop) {
                     val receivedUserSocket = serverSocket.accept()
                     try {
@@ -42,11 +43,13 @@ class ReceiveMessageServer(port: Int,
                         Log.d(TAG, "Received message")
                         Log.d(TAG, "Message: $stingMessage")
 
-                        messageAdapter.add(Message(
-                            senderId = messageAdapter.otherUserId,
-                            recipientId = messageAdapter.ownerId,
-                            text = stingMessage
-                        ))
+                        messageAdapter.add(
+                            Message(
+                                senderId = messageAdapter.otherUserId,
+                                recipientId = messageAdapter.ownerId,
+                                text = stingMessage
+                            )
+                        )
                     } catch (e: IOException) {
                         e.printStackTrace()
                     }
