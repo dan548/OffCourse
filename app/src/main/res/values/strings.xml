@@ -10,7 +10,8 @@
     <string name="sign_in_username">Username</string>
     <string name="sign_in_password">Enter password</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_contact_text">To start new conversation, exchange your QR-codes.
+        Your QR can be found in "Show QR".</string>
     <string name="show_this_qr_to_your_companion">Show this QR to your companion</string>
 
     <string name="shared_pref_key">com.github.victimoftrap.offcourse.SHARED_PREF_FILE</string>

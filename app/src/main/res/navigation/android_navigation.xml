@@ -51,7 +51,7 @@
     <fragment
         android:id="@+id/add_contact_fragment"
         android:name="com.collegeboys.offcourse.fragments.AddContactFragment"
-        android:label="fragment_add_contact"
+        android:label="Start new conversation"
         tools:layout="@layout/fragment_add_contact" >
         <action
             android:id="@+id/action_add_contact_fragment_to_qr_displayer_fragment"
@@ -61,28 +61,28 @@
             app:destination="@id/qr_scanner_fragment" />
     </fragment>
 
-    <fragment
-        android:id="@+id/scan_qr_code_fragment"
-        android:name="com.collegeboys.offcourse.fragments.ScanQrCodeFragment"
-        android:label="fragment_scan_qr_code"
-        tools:layout="@layout/fragment_scan_qr_code" />
+<!--    <fragment-->
+<!--        android:id="@+id/scan_qr_code_fragment"-->
+<!--        android:name="com.collegeboys.offcourse.fragments.ScanQrCodeFragment"-->
+<!--        android:label="fragment_scan_qr_code"-->
+<!--        tools:layout="@layout/fragment_scan_qr_code" />-->
 
-    <fragment
-        android:id="@+id/show_qr_code_fragment"
-        android:name="com.collegeboys.offcourse.fragments.ShowQrCodeFragment"
-        android:label="fragment_show_qr_code"
-        tools:layout="@layout/fragment_show_qr_code" />
+<!--    <fragment-->
+<!--        android:id="@+id/show_qr_code_fragment"-->
+<!--        android:name="com.collegeboys.offcourse.fragments.ShowQrCodeFragment"-->
+<!--        android:label="fragment_show_qr_code"-->
+<!--        tools:layout="@layout/fragment_show_qr_code" />-->
 
     <fragment
         android:id="@+id/chat_fragment"
         android:name="com.collegeboys.offcourse.fragments.ChatFragment"
-        android:label="fragment_chat"
+        android:label="Chat"
         tools:layout="@layout/fragment_chat" />
 
     <fragment
         android:id="@+id/qr_displayer_fragment"
         android:name="com.collegeboys.offcourse.fragments.QrDisplayerFragment"
-        android:label="fragment_qr_displayer"
+        android:label="Your QR code"
         tools:layout="@layout/fragment_qr_displayer" >
         <action
             android:id="@+id/action_qr_displayer_fragment_to_qr_scanner_fragment"
@@ -95,7 +95,7 @@
     <fragment
         android:id="@+id/qr_scanner_fragment"
         android:name="com.collegeboys.offcourse.fragments.QrScannerFragment"
-        android:label="fragment_qr_scanner"
+        android:label="Scan companion's QR code"
         tools:layout="@layout/fragment_qr_scanner" >
         <action
             android:id="@+id/action_qr_scanner_fragment_to_chat_fragment"
