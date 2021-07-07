@@ -2,10 +2,12 @@ package com.collegeboys.offcourse.di
 
 import com.collegeboys.offcourse.database.OffCourseAppDatabase
 import com.collegeboys.offcourse.repository.UserRepository
-
-import androidx.room.Room
+import com.collegeboys.offcourse.repository.ContactRepository
+import com.collegeboys.offcourse.repository.MessageRepository
 import com.collegeboys.offcourse.viewmodel.CreateAccountViewModel
 import com.collegeboys.offcourse.viewmodel.SignInViewModel
+
+import androidx.room.Room
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
@@ -42,5 +44,25 @@ val createAccountModule = module {
 val signInModule = module {
     viewModel("SignInViewModel") {
         SignInViewModel(get())
+    }
+}
+
+val contactModule = module {
+    single("ContactDao") {
+        get<OffCourseAppDatabase>().contactDao()
+    }
+
+    single("ContactRepository") {
+        ContactRepository(get())
+    }
+}
+
+val messageModule = module {
+    single("MessageDao") {
+        get<OffCourseAppDatabase>().messageDao()
+    }
+
+    single("MessageRepository") {
+        MessageRepository(get())
     }
 }

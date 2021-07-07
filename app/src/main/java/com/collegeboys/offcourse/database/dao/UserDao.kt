@@ -20,10 +20,10 @@ interface UserDao {
     }
 
     @Query("SELECT * FROM users WHERE user_id = :id")
-    fun getById(id: String): User
+    fun getById(id: String): User?
 
     @Query("SELECT * FROM users WHERE name = :name")
-    fun getByName(name: String): User
+    fun getByName(name: String): User?
 
     @Query("SELECT * FROM users")
     fun getUsers(): List<User>

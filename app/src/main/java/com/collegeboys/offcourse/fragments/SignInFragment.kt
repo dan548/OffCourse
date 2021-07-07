@@ -1,8 +1,10 @@
 package com.collegeboys.offcourse.fragments
 
 import com.collegeboys.offcourse.viewmodel.SignInViewModel
+import com.collegeboys.offcourse.database.entity.UserSession
 import com.collegeboys.offcourse.R
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,10 +14,12 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import com.collegeboys.offcourse.database.entity.UserSession
 import org.koin.android.viewmodel.ext.android.viewModel
+import java.time.LocalDateTime
 
 class SignInFragment : Fragment() {
+    private lateinit var usernameElement: EditText
+    private lateinit var passwordElement: EditText
     private val signInViewModel: SignInViewModel by viewModel()
 
     override fun onCreateView(
@@ -24,26 +28,42 @@ class SignInFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_sign_in, container, false)
+        usernameElement = view.findViewById(R.id.sign_in_username)
+        passwordElement = view.findViewById(R.id.sign_in_password)
 
-        val signInButton = view.findViewById<Button>(R.id.button_sign_in)
+        val preference = activity?.getPreferences(Context.MODE_PRIVATE)
+        val defaultUsername: String? = preference?.getString(
+            getString(R.string.shared_pref_username_key), null
+        )
+        if (defaultUsername != null) {
+            view.findViewById<EditText>(R.id.sign_in_username).setText(defaultUsername)
+        }
+
+        val signInButton = view.findViewById<Button>(R.id.sign_in_button)
         signInButton.setOnClickListener {
-            signIn(view)
-            val action = SignInFragmentDirections.actionSignInFragmentToBlankFragment()
-            Navigation.findNavController(view).navigate(R.id.action_sign_in_fragment_to_blankFragment)
+            if (signIn()) {
+                Navigation
+                    .findNavController(view)
+                    .navigate(R.id.action_sign_in_fragment_to_add_contact_fragment)
+            }
         }
         return view
     }
 
-    fun signIn(view: View) {
-        val password = view.findViewById<EditText>(R.id.editTextEnterPassword)
-            .text
-            .toString()
+    fun signIn(): Boolean {
+        val username = usernameElement.text.toString()
+        val password = passwordElement.text.toString()
 
-        val user = signInViewModel.getUser()
-        if (user.password == password) {
-            signInViewModel.createNewSession(UserSession(userId = user.userId))
-
-            Toast.makeText(context, "SIGNED", Toast.LENGTH_LONG).show()
+        val user = signInViewModel.getUserByName(username)
+        if (user != null) {
+            if (user.password == password) {
+                signInViewModel.createNewSession(
+                    UserSession(userId = user.userId, loginDate = LocalDateTime.now())
+                )
+                Toast.makeText(context, "Signed!", Toast.LENGTH_LONG).show()
+            }
+            return true
         }
+        return false
     }
 }

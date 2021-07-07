@@ -26,7 +26,6 @@ class GettingStartedFragment : Fragment() {
             val action = GettingStartedFragmentDirections.actionGettingStartedFragmentToCreateAccountFragment()
             Navigation.findNavController(view).navigate(R.id.action_getting_started_fragment_to_create_account_fragment)
         }
-
         return view
     }
 }
